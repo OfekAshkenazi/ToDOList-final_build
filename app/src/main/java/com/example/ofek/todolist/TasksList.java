@@ -2,37 +2,33 @@ package com.example.ofek.todolist;
 
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextClock;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import MyAdapters.MyAdapter;
 import MyClasses.Task;
 import worker8.com.github.radiogroupplus.RadioGroupPlus;
 
 public class TasksList extends AppCompatActivity {
-    RadioGroupPlus radioGroup;
-    RadioButton radioLow,radioHigh,radioMid,radioNone;
-    Button addBtn;
-    TextClock timeView;
-    EditText titleET,descET;
+    public static RadioGroupPlus radioGroup;
+    public static RadioButton radioLow,radioHigh,radioMid,radioNone;
+    public static Button addBtn;
+    public static TextClock timeView;
+    public static EditText titleET,descET;
     ArrayList<Task> tasks=new ArrayList<>();
-    ListView taskListV;
-    ArrayAdapter adapter;
-    ArrayList<String> tasksNames=new ArrayList<>();
+    public static ListView taskListV;
+    MyAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,32 +39,21 @@ public class TasksList extends AppCompatActivity {
     }
 
     public void setTaskListV() {
-        adapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,tasksNames);
+        adapter= new MyAdapter(this, tasks);
         taskListV.setAdapter(adapter);
-        taskListV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Task task = findTaskByName(((TextView) view).getText().toString());
-                AlertDialog taskDialog = getDialog(task);
-                taskDialog.show();
-            }
-        });
     }
-    private AlertDialog getDialog(final Task task){
-        AlertDialog dialog=new AlertDialog.Builder(TasksList.this).create();
-        dialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Delete Task", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                tasks.remove(task);
-                tasksNames.remove(task.getTitle());
-                adapter.notifyDataSetChanged();
-            }
-        });
-        dialog.setTitle(task.getTitle());
-        dialog.setMessage("Time: "+task.getTime()+"\n"+"Description:"+"\n"+task.getDesc()+"\n"+"Priority: "+task.getPriorityAsString());
 
-        return dialog;
+    public static int getPriorityRadioId(Task task) {
+        switch (task.getPriority()){
+            case 1:return (R.id.radioLow);
+            case 2:return (R.id.radioMedium);
+            case 3:return (R.id.radioHigh);
+            default:return (R.id.radioNoPriority);
+        }
     }
+
+
+
     private void setViews(){
         radioGroup=(RadioGroupPlus) findViewById(R.id.radioG);
         radioHigh= (RadioButton) findViewById(R.id.radioHigh);
@@ -81,6 +66,7 @@ public class TasksList extends AppCompatActivity {
         descET= (EditText) findViewById(R.id.descEt);
         taskListV= (ListView) findViewById(R.id.taskList);
     }
+
     int hour,minutes;
     private void setListeners(){
         timeView.setOnClickListener(new View.OnClickListener() {
@@ -97,36 +83,30 @@ public class TasksList extends AppCompatActivity {
                     Toast.makeText(TasksList.this, "please make sure you entered the title and picked priority", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Task task=new Task(titleET.getText().toString(),timeView.getText().toString(),getPriority(),descET.getText().toString());
+                int id=radioGroup.getCheckedRadioButtonId();
+                RadioButton temp= (RadioButton) findViewById(id);
+                String priority=temp.getText().toString().toLowerCase();
+                Task task=new Task(titleET.getText().toString(),timeView.getText().toString(),getPriority(priority),descET.getText().toString());
                 tasks.add(task);
-                tasksNames.add(task.getTitle());
                 adapter.notifyDataSetChanged();
-                TextView textView= (TextView) taskListV.getAdapter().getView(tasksNames.size()-1,null,taskListV);
-                textView.setBackgroundColor(Color.parseColor(getPriorityColorID(task.getPriority())));
-                Toast.makeText(TasksList.this, "", Toast.LENGTH_SHORT).show();
+                descET.setText(null);
+                titleET.setText(null);
+                radioGroup.clearCheck();
+                timeView.setText(null);
             }
         });
     }
 
-    private int getPriority() {
-        int id=radioGroup.getCheckedRadioButtonId();
-        RadioButton temp= (RadioButton) findViewById(id);
-        switch (temp.getText().toString()){
-            case "Low":return 1;
-            case "Mid":return 2;
-            case "High":return 3;
-            default:
-                return 0;
-        }
+    private int getPriority(String priority) {
+        if (priority.equals("low"))
+            return 1;
+        if (priority.equals("mid"))
+            return 2;
+        if (priority.equals("high"))
+            return 3;
+        return 0;
     }
-    private String getPriorityColorID(int num){
-        switch (num){
-            case 1:return (""+android.R.color.holo_green_light);
-            case 2:return (""+android.R.color.holo_orange_light);
-            case 3:return (""+android.R.color.holo_red_light);
-            default:return (""+R.color.gray);
-        }
-    }
+
 
     private TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
         @Override
@@ -146,12 +126,19 @@ public class TasksList extends AppCompatActivity {
             timeView.setText(sHour+":"+sMinute);
         }
     };
-    private Task findTaskByName(String title){
-        for (Task task:tasks){
-            if (title.equals(task.getTitle()))
-                return task;
-        }
-        return null;
+    private AlertDialog getDialog(final Task task){
+        AlertDialog dialog=new AlertDialog.Builder(TasksList.this).create();
+        dialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Delete Task", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                tasks.remove(task);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        dialog.setTitle(task.getTitle());
+        dialog.setMessage("Time: "+task.getTime()+"\n"+"Description:"+"\n"+task.getDesc()+"\n"+"Priority: "+task.getPriorityAsString());
+
+        return dialog;
     }
 
 
