@@ -70,23 +70,21 @@ public class TodoListSQLiteDatabase extends SQLiteOpenHelper {
         return db.insert(TABLE_NAME,null,values);
     }
 
-    public boolean updateData(String id,Task task) {
+    public boolean updateData(Task task,Task task1) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(UID,id);
-        values.put(COL_1,task.getTitle());
-        values.put(COL_2,task.getDesc());
-        values.put(COL_3,task.getTime().toString());
-        values.put(COL_4,task.getPriority());
-        if(db.update(TABLE_NAME, values, "ID = ?",new String[] { id })!=-1){
-            insert(task);
-        }
-        return true;
+        values.put(UID,task.getId());
+        values.put(COL_1,task1.getTitle());
+        values.put(COL_2,task1.getDesc());
+        values.put(COL_3,task1.getTime().toString());
+        values.put(COL_4,task1.getPriority());
+        return db.update(TABLE_NAME, values, UID + " = ?",
+                new String[] { String.valueOf(task.getId())})!=(-1);
     }
 
-    public Integer deleteData (int id) {
+    public Integer deleteData (Task task) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, "ID = ?",new String[] {String.valueOf(id)});
+        return db.delete(TABLE_NAME, "ID = ?",new String[] {String.valueOf(task.getId())});
     }
     public Task getTask(long index,boolean isFirst,boolean isLast){
         Cursor cursor=getAllData();

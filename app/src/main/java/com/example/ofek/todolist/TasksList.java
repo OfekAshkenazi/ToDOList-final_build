@@ -127,14 +127,6 @@ public class TasksList extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        if (tasks.size()==db.getAllData().getCount()) return;
-        initializeTasksArray();
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==ADD_TASK_CALL){
             if (resultCode==AddTaskActivity.INSERTED_RESULT){
@@ -142,7 +134,6 @@ public class TasksList extends AppCompatActivity {
                 tasks.add(task);
                 adapter.notifyDataSetChanged();
                 db.insert(task);
-                db.closeDB();
             }
         }
     }
