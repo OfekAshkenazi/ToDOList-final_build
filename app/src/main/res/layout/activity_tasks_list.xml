@@ -7,179 +7,197 @@
     tools:context="com.example.ofek.todolist.TasksList"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.5"-->
+        <!--android:background="@android:color/background_light"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:paddingLeft="10dp">-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/TaskNameTV"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Task Name:"-->
+                <!--android:textColor="@android:color/black" />-->
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/blankL"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/TaskNameTV"-->
+                <!--android:background="@android:color/background_light">-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/TitleET"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Name" />-->
+            <!--</RelativeLayout>-->
+
+            <!--<TextClock-->
+                <!--android:id="@+id/TextClock"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_below="@+id/blankL"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="?attr/colorButtonNormal"-->
+                <!--android:textSize="16sp"-->
+                <!--android:layout_alignEnd="@+id/TaskNameTV" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@id/blankL"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_toRightOf="@id/TextClock"-->
+                <!--android:text="Priority:"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textSize="12sp"-->
+                <!--android:textStyle="bold" />-->
+
+            <!--<worker8.com.github.radiogroupplus.RadioGroupPlus-->
+                <!--android:id="@+id/radioG"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@+id/TextClock"-->
+
+                <!--android:orientation="vertical">-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radioNoPriority"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="none"-->
+                        <!--android:textColor="?attr/colorControlHighlight"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textStyle="bold" />-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radioMedium"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="Mid"-->
+                        <!--android:textColor="@android:color/holo_orange_light"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:layout_below="@+id/radioLow"-->
+                        <!--android:layout_alignParentStart="true" />-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radioLow"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="Low"-->
+                        <!--android:textColor="@android:color/holo_green_light"-->
+                        <!--android:textStyle="bold" />-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/radioHigh"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true"-->
+                        <!--android:layout_below="@+id/radioNoPriority"-->
+                        <!--android:layout_toEndOf="@+id/radioLow"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:text="High"-->
+                        <!--android:textColor="@android:color/holo_red_light"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:layout_alignStart="@+id/radioNoPriority"-->
+                        <!--android:layout_alignBottom="@+id/radioMedium" />-->
+                <!--</RelativeLayout>-->
+            <!--</worker8.com.github.radiogroupplus.RadioGroupPlus>-->
+        <!--</RelativeLayout>-->
+
+        <!--<android.support.constraint.ConstraintLayout-->
+
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="2">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/AddBtn"-->
+                <!--android:layout_width="63dp"-->
+                <!--android:layout_height="36dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:layout_marginLeft="8dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:text="Add"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textSize="14sp"-->
+                <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="1.0"-->
+                <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                <!--app:layout_constraintRight_toRightOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--app:layout_constraintVertical_bias="1.0" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/descET"-->
+                <!--android:layout_width="252dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:ems="10"-->
+                <!--android:hint="Description"-->
+                <!--android:inputType="textPersonName"-->
+                <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                <!--app:layout_constraintRight_toRightOf="parent"-->
+                <!--tools:layout_editor_absoluteX="1dp"-->
+                <!--tools:layout_editor_absoluteY="1dp" />-->
+        <!--</android.support.constraint.ConstraintLayout>-->
+    <!--</LinearLayout>-->
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/taskListToolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:background="@android:color/background_light"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="Your Tasks"
+        app:titleMarginStart="130dp" />
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingLeft="10dp">
-
-
-            <TextView
-                android:id="@+id/TaskNameTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Task Name:"
-                android:textColor="@android:color/black" />
-
-            <RelativeLayout
-                android:id="@+id/blankL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/TaskNameTV"
-                android:background="@android:color/background_light">
-
-                <EditText
-                    android:id="@+id/TitleET"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name" />
-            </RelativeLayout>
-
-            <TextClock
-                android:id="@+id/TextClock"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/blankL"
-                android:layout_marginTop="10dp"
-                android:background="?attr/colorButtonNormal"
-                android:textSize="16sp"
-                android:layout_alignEnd="@+id/TaskNameTV" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/blankL"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/TextClock"
-                android:text="Priority:"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <worker8.com.github.radiogroupplus.RadioGroupPlus
-                android:id="@+id/radioG"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/TextClock"
-
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <RadioButton
-                        android:id="@+id/radioNoPriority"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_weight="1"
-                        android:text="none"
-                        android:textColor="?attr/colorControlHighlight"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/radioMedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@id/radioNoPriority"
-                        android:layout_weight="1"
-                        android:text="Mid"
-                        android:textColor="@android:color/holo_orange_light"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/radioLow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_weight="1"
-                        android:text="Low"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/radioHigh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/radioNoPriority"
-                        android:layout_toEndOf="@+id/radioLow"
-                        android:layout_weight="1"
-                        android:text="High"
-                        android:textColor="@android:color/holo_red_light"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_alignStart="@+id/radioNoPriority" />
-                </RelativeLayout>
-            </worker8.com.github.radiogroupplus.RadioGroupPlus>
-        </RelativeLayout>
-
-        <android.support.constraint.ConstraintLayout
-
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
-
-            <Button
-                android:id="@+id/AddBtn"
-                android:layout_width="63dp"
-                android:layout_height="36dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Add"
-                android:textAllCaps="false"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <EditText
-                android:id="@+id/descEt"
-                android:layout_width="252dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Description"
-                android:inputType="textPersonName"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="1dp" />
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="10">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/addTaskBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_input_add" />
 
         <ListView
             android:id="@+id/taskList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </ListView>
-
-    </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"></ListView>
+    </RelativeLayout>
 
 
 </LinearLayout>

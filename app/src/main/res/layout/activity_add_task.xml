@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.ofek.todolist.AddTaskActivity"
+    android:padding="10dp"
+    android:background="@android:color/darker_gray">
+
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/TaskNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task Name:"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/blankL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TaskNameTV">
+
+            <EditText
+                android:id="@+id/TitleET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name" />
+        </RelativeLayout>
+
+        <TextClock
+            android:id="@+id/TextClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/blankL"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextClock"
+            android:text="Priority:"
+            android:textStyle="bold" />
+
+        <worker8.com.github.radiogroupplus.RadioGroupPlus
+            android:id="@+id/radioG"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TextClock"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioLow"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="Low"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/radioNoPriority"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/radioLow"
+                    android:text="none"
+                    android:textColor="?attr/colorControlHighlight"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/radioMedium"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/radioLow"
+                    android:text="Mid"
+                    android:textColor="@android:color/holo_orange_light"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/radioHigh"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/radioNoPriority"
+                    android:layout_toRightOf="@id/radioMedium"
+                    android:text="High"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+        </worker8.com.github.radiogroupplus.RadioGroupPlus>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description: "
+        android:textStyle="bold"
+        android:layout_below="@id/layout1" />
+
+    <EditText
+        android:id="@+id/descET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName" />
+    <Button
+        android:id="@+id/AddBtn"
+        android:layout_width="63dp"
+        android:layout_height="36dp"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:layout_below="@id/descET"/>
+
+
+</RelativeLayout>

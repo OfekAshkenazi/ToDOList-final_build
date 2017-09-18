@@ -1,22 +1,38 @@
 package MyClasses;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.UUID;
+
 /**
  * Created by Ofek on 25-Jul-17.
  */
 
-public class Task {
+
+public class Task implements Serializable {
     String Title;
-    String Time;
+    CharSequence Time;
     String description;
     int priority;
+    int id;
 
-    public Task(String title, String time, int priority,String desc) {
+    public Task(String title, CharSequence time, int priority,String desc) {
         Title = title;
         Time = time;
         this.description = desc;
         this.priority = priority;
+        id= UUID.randomUUID().hashCode();
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getTitle() {
         return Title;
     }
@@ -25,7 +41,7 @@ public class Task {
         Title = title;
     }
 
-    public String getTime() {
+    public CharSequence getTime() {
         return Time;
     }
 
@@ -70,4 +86,29 @@ public class Task {
         return description != null ? description.equals(task.description) : task.description == null;
 
     }
+    public static void sortTasksArray(ArrayList<Task> tasks,int field) {
+        if (field==1)
+            Collections.sort(tasks,new TaskPriorityComparator());
+        if (field==2)
+            Collections.sort(tasks,new TaskTitleComparator());
+
+    }
+
 }
+
+    class TaskPriorityComparator implements Comparator<Task>{
+
+        @Override
+        public int compare(Task task, Task t1) {
+            if (task.getPriority()>t1.getPriority()) return 0;
+            return 1;
+        }
+    }
+    class TaskTitleComparator implements Comparator<Task>{
+
+        @Override
+        public int compare(Task task, Task t1) {
+            return task.getTitle().compareTo(t1.getTitle());
+        }
+    }
+
